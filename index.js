@@ -11,7 +11,7 @@ const app = express();
 //  MongoDB connection
 mongoose.connect(process.env.MONGO_URL)
     .then(() => console.log('Connected to Database'))
-    .catch(err => console.error(" Database connection error:", err));
+    .catch(error => console.error(" Database connection error:", error));
 
 // Port
 const PORT = process.env.PORT || 5000;
@@ -21,9 +21,9 @@ app.use(cookieParser());
 
 
 // Routes
-app.use("/api/auth", require("./routes/auth.route"));
-app.use("/api/users", require("./routes/user.route"));
-app.use("/api/tasks", require("./routes/task.route"));
+app.use("/auth",authRoutes);
+app.use("/users", userRoutes);
+app.use("/tasks", taskRoutes);
 
 
     
