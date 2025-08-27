@@ -17,7 +17,7 @@ const createTask = async (req, res) => {
   }
 };
 
-// Get All Tasks (User-specific)
+// Get All Tasks by a user
 const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find({ user: req.user.id });
