@@ -11,14 +11,21 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    category: { type: String },
+    description: { type: String, required: true},
     deadline: { type: Date },
     completed: {
       type: Boolean,
       default: false
     },
+    category: {
+      type: String,
+      enum: ["Work", "Personal", "Study", "Shopping", "Other"],
+      default: "Work",
+    },
+
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Task", taskSchema);
+const Task = mongoose.model("Task", taskSchema);
+module.exports = Task;
